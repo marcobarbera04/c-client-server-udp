@@ -13,17 +13,12 @@ int main()
     int server_socket_fd;                                   // server socket file descriptor
     struct sockaddr_in server_address;                      // server address (internet socket)
     struct sockaddr_in client_address;                      // client address (internet socket)
-    int server_address_lenght = sizeof(server_address);      // size in bytes of the server socket
-    int client_address_lenght = sizeof(client_address);      // size in bytes of the client socket
+    int server_address_lenght = sizeof(server_address);     // size in bytes of the server socket
+    int client_address_lenght = sizeof(client_address);     // size in bytes of the client socket
 
     char buffer[BUFFER_SIZE] = {0};
 
     char *server_message = "Message sent from server";
-
-    // set server socket actual values
-    server_address.sin_family = AF_INET;
-    server_address.sin_addr.s_addr = INADDR_ANY;            // set the client socket to any (any address[client] will be accepted)
-    server_address.sin_port = htons(PORT);                  // set the port 
 
     // create the socket
     if((server_socket_fd = socket(AF_INET, SOCK_DGRAM, 0)) == 0)
